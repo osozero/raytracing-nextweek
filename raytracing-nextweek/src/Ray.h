@@ -4,9 +4,14 @@
 class ray
 {
 public:
-	ray();
+	
+	ray(){}
+
 	ray(const glm::vec3 a, const glm::vec3 &b, float f = 0.0)
-		:origin(a), direction(b), _time(f){}
+		:origin(a), direction(b), _time(f)
+	{
+		
+	}
 	
 	glm::vec3 getOrigin() const
 	{
@@ -23,12 +28,12 @@ public:
 		return _time;
 	}
 
-	glm::vec3 pointAtParameter(float t)
+	glm::vec3 pointAtParameter(float t) const
 	{
 		return origin + t * direction;
 	}
 
-	~ray();
+	~ray(){}
 
 private:
 	glm::vec3 origin;
