@@ -4,7 +4,7 @@
 #include <iostream>
 #include "sphere.h"
 #include "hitable_list.h"
-
+#include "camera.h"
 
 
 class hitable;
@@ -31,10 +31,7 @@ int main()
 
 	std::cout << "P3\n" << x << " " << y << "\n255\n";
 
-	glm::vec3 lowerLeftCorner(-2.0, -1.0, -1.0);
-	glm::vec3 horizontal(4.0, 0.0, 0.0);
-	glm::vec3 vertical(0.0, 2.0, 0.0);
-	glm::vec3 origin(0.0, 0.0, 0.0);
+	camera cam;
 
 	hitable *list[2];
 	
@@ -50,7 +47,7 @@ int main()
 			float u = float(i) / float(x);
 			float v = float(j) / float(y);
 
-			ray r(origin, lowerLeftCorner + u * horizontal + v * vertical);
+			ray r = cam.getRay(u, v);
 
 			glm::vec3 p = r.pointAtParameter(2.0);
 			glm::vec3 col = color(r, world);
