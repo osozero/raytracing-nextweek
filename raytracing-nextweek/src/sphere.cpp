@@ -32,7 +32,7 @@ bool sphere::hit(const ray &r, float tMin, float tMax, hitRecord &rec)
 			rec.p = r.pointAtParameter(temp);
 
 			//calculates normal of point p on shpere
-			rec.normal = glm::normalize(rec.p - center);
+			rec.normal = (rec.p - center)/radius;
 
 			return true;
 		}
@@ -44,7 +44,7 @@ bool sphere::hit(const ray &r, float tMin, float tMax, hitRecord &rec)
 			rec.t = temp;
 			rec.p = r.pointAtParameter(temp);
 
-			rec.normal = glm::normalize(rec.p - center);
+			rec.normal = (rec.p - center) / radius;
 
 			return true;
 		}
